@@ -1,0 +1,113 @@
+main.shoe {
+  background: rgb(166,121,93);
+  background: radial-gradient(ellipse at bottom, rgba(166,121,93,1) 15%, rgba(112,112,112,1) 50%);
+  min-height: calc(100vh - 40px);
+  position: relative;
+  color: $font-color;
+
+  & .main-header #bg-blur {
+    opacity: .4;
+  }
+
+  & .shoe-photo img  {
+    max-width: 100%;
+  }
+
+  & .wishlist {
+
+    & .wish {
+      fill: transparent;
+      stroke: #fff;
+      stroke-width: 3px;
+      height: 30px;
+      cursor: pointer;
+    }
+
+    & .wish:hover {
+      fill: #f05b5b;
+    }
+
+    & .wish.favourited {
+      fill: #f05b5b !important;
+    }
+  }
+
+  & .sizes div .size{
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    color: #fff;
+    width: 30px;
+    height: 30px;
+    border: 2px #fff solid;
+    border-radius: 3px;
+
+    &:hover {
+      background-color: #fff;
+      color: $dark-blue;
+    }
+    
+  }
+  .size span {
+    display: none;
+  }
+  .current {
+    background-color: #fff;
+    color: $dark-blue !important;
+  }
+  .current span{
+    display: block;
+    position: absolute;
+    bottom: -33px;
+    font-size: 10px;
+    color: #fff !important;
+  }
+
+  .single-shoe {
+      margin: 0 auto;
+      background-color: $transparent-brown;
+  }
+
+  .shoe-product-information {
+    width: 60%;
+  }
+
+  .tabs {
+    border-radius: 3px 3px 0 0;
+    cursor: pointer;
+  }
+
+  .tab-tale, .tab-spec {
+    border-radius: 3px 3px 0 0;
+  } 
+
+  .tabs > div {
+    background-color: rgba($dark-brown, .33);
+  }
+
+  .tabs > .active {
+    background-color: $dark-brown;
+  }
+
+
+  .shoe-info-text {
+    background-color: $dark-brown;
+    border-radius: 0 3px 0 0;
+  }
+
+  .invisible-text {
+    display: none;
+  }
+
+  @media (max-width: 575.98px) {
+    .shoe-product-information {
+        width: 100%;
+    }
+  }
+}
+
+
+

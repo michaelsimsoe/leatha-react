@@ -1,0 +1,41 @@
+main.checkout {
+  background: rgb(166,121,93);
+  background: radial-gradient(ellipse at bottom, rgba(166,121,93,1) 15%, rgba(112,112,112,1) 50%);
+  min-height: calc(100vh - 40px);
+  position: relative;
+  color: $font-color;
+
+  & .main-header #bg-blur {
+    opacity: .4;
+  }
+
+  .checkout-col {
+    background-color: rgba($dark-brown, .33);
+    max-width: 70%;
+  }
+
+  .order-comfirmation {
+    & h1 {
+      font-size: 90px;
+    }
+
+    & h2, & h3 {
+      font-family: 'Raleway', Arial, sans-serif;
+    }
+  }
+
+  .register-options {
+  }
+}
+
+@media (max-width: 575.98px) {
+    main.checkout {
+        & .order-comfirmation h1 {
+          font-size: 28px;
+        }
+
+        & .checkout-col {
+          max-width: 100%;
+        }
+    }
+  }

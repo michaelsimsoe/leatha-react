@@ -1,0 +1,33 @@
+.main-footer {
+  color: $font-color;
+
+  & a {
+    color: $font-color;
+  }
+
+  @media (max-width: 575.98px) {
+    & {
+      margin-bottom: 70px;
+    }
+  }
+}
+
+.main-footer__nav {
+  & a {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  & a:hover {
+    color: darken($font-color, 3%);
+  }
+
+    & a.active {
+    background-color: $transparent-brown;
+    color: darken($font-color, 5%);
+    text-decoration: underline;
+    text-decoration-color: $dark-blue;
+    font-size: 22px;
+    padding: 3px;
+  }
+}

@@ -1,0 +1,21 @@
+@import "base/index";
+@import "layout/index";
+@import "modules/index";
+
+@media (max-width: 575.98px) {
+  .main-header__nav {
+    display: none !important;
+  }
+
+  .footer-image-text {
+    display: none !important;
+  }
+}
+
+.crumbs {
+  color: $font-color;
+}
+
+.crumbs a {
+  color: $font-color;
+}

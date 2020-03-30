@@ -1,0 +1,11 @@
+.cta-btn {
+  background-color: $cta-color;
+}
+
+.cta-btn:hover {
+  background-color: darken($cta-color, 10%);
+}
+
+.cta-btn:active {
+  background-color: darken($cta-color, 15%) !important;
+}

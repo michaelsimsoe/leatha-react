@@ -1,0 +1,75 @@
+main.contact {
+  background: url("/img/hq.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; 
+  color: $font-color;
+  min-height: calc(100vh - 40px);
+
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+}
+
+
+.contact {
+  & section h3 {
+    font-family: 'Raleway', Arial, sans-serif;
+    font-size: 22px;
+    font-weight: bold;
+  }
+
+  &-faq, &-message, &-social {
+    max-height: 80%;
+  }
+
+  &-faq, &-message {
+    background-color: rgba(#707070, .6);
+  }
+
+  &-social {
+    flex-shrink: 2;
+    & > img {
+      height: 55px;
+    }
+  }
+
+  &-faq {
+    font-size: 14px;
+  }
+
+  // The form
+  #contact-name-message,
+  #contact-email-message,
+  #contact-message-message {
+    display:none;
+    color: #fff;
+    font-size: 22px;
+  }
+
+  #contact-email.invalid {
+    border: 5px solid red;
+  }
+
+  #contact-email.invalid:focus {
+    border: 1px solid red;
+  }
+
+  #contact-email.invalid + #contact-email-message {
+    display: block;
+  }
+
+  #contact-message.invalid {
+    border: 5px solid red;
+  }
+
+  #contact-message.invalid:focus {
+    border: 1px solid red;
+  }
+
+  #contact-message.invalid + #contact-message-message {
+    display: block;
+  }
+}

@@ -1,0 +1,97 @@
+main.shoes {
+  background: rgb(166,121,93);
+  background: radial-gradient(ellipse at bottom, rgba(166,121,93,1) 15%, rgba(112,112,112,1) 50%);
+  
+  min-height: calc(100vh - 40px);
+  position: relative;
+
+  & .main-header #bg-blur {
+    opacity: .4;
+  }
+}
+
+.shoes {
+  .card {
+    position: relative;
+    width: 250px;
+    height: 260px;
+    overflow: hidden;
+
+    & .shoe-img {
+      position: absolute;
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+      transition: all 8s;
+    }
+
+    & .shoe-img:hover {
+      transform: scale(1.1);
+    }
+
+    
+    & .wishes {
+      position: absolute;
+      fill: transparent;
+      stroke: #fff;
+      stroke-width: 3px;
+      height: 25px;
+      top: 4px;
+      right: 4px;
+      color: #fff;
+      border:none;
+      cursor: pointer;
+      &:hover {
+        fill: #f05b5b !important;
+      }
+
+      &.favourited {
+      fill: #f05b5b !important;
+    }
+    }
+
+    
+    & .name-price {
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      color: $font-color;
+    }
+    & .read-more {
+      position: absolute;
+      bottom: 4px;
+      left: 4px;
+    }
+
+    
+    & .add-cart {
+      position: absolute;
+      bottom: 4px;
+      right: 4px;
+    }
+
+    & .read-more,
+    & .add-cart {
+      background-color: transparent;
+      border: 2px solid #fff;
+      color: #fff;
+      transition: all .2s;
+    }
+
+    & .read-more:hover,
+    & .add-cart:hover {
+      background-color: rgba(#fff, .2);
+      border: 2px solid #fff;
+    }
+
+    & .shoe-img:hover ~ .read-more {
+    }
+  }
+}
+
+.shoes__products {
+  flex-wrap: wrap;
+  background-size: 100px;
+  background-repeat: space;
+  background-image: url('/img/boots.svg');
+}

@@ -1,0 +1,38 @@
+@font-face {
+  font-family: 'Lobster';
+  src: url('../../assets/fonts/Lobster/Lobster-Regular.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Raleway';
+  src: url('../../assets/fonts/Raleway/Raleway-Regular.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Raleway';
+  src: url('../../assets/fonts/Raleway/Raleway-Bold.ttf');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Raleway';
+  src: url('../../assets/fonts/Raleway/Raleway-Light.ttf');
+  font-weight: normal;
+  font-style: italic;
+}
+
+:root {
+  font-family: 'Raleway', Arial, sans-serif;
+  color: $font-color;
+}
+
+h1,
+h2,
+h3 {
+  font-family: Lobster;
+  color: $font-color;
+}

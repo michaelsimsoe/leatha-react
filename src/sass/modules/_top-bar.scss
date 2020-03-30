@@ -1,0 +1,14 @@
+.top-bar {
+  align-items: center;
+  background-color: #1E364E;
+  color: #fff;
+  display: flex;
+  height: 40px;
+  justify-content: space-between;
+  width: 100vw;
+  z-index: 50;
+
+  &__promotion {
+    margin-top: 15px;
+  }
+}

@@ -1,0 +1,60 @@
+main.cart {
+  background: rgb(166,121,93);
+  background: radial-gradient(ellipse at bottom, rgba(166,121,93,1) 15%, rgba(112,112,112,1) 50%);
+  min-height: calc(100vh - 40px);
+  position: relative;
+  color: $font-color;
+
+  & .main-header #bg-blur {
+    opacity: .4;
+  }
+
+  & h4 {
+    font-weight: bold;
+  }
+  & h4 > span {
+    font-size: 12px;
+  } 
+
+  .cart-col {
+    background-color: rgba($dark-brown, .33);
+    max-width: 70%;
+  }
+
+  .cart-info {
+    background-color: $dark-brown;
+
+    & p > span {
+      font-weight: bold;
+    }
+    
+  }
+
+  .cart-error-message {
+    display:none;
+  }
+
+  & input.invalid {
+    border: 5px solid red;
+  }
+
+  & input.invalid:focus {
+    border: 1px solid red;
+  }
+
+  & input.invalid ~ .cart-error-message {
+    display: block;
+  }
+
+  @media (max-width: 575.98px) {
+      .cart-col {
+          max-width: 100% !important;
+      }
+    }
+
+  .payment-options a {
+    font-size: 22px;
+    color: $dark-blue;
+    font-weight: bold;
+  }
+}
