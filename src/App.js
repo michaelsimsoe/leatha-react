@@ -1,20 +1,49 @@
 import React from 'react';
-// import { Home } from './pages/home';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Home } from './pages/home';
+import { Header } from './components/header/Header';
+import { Products } from './pages/products';
+import { Product } from './pages/product';
+import { CartPage } from './pages/cart';
 import { Checkout } from './pages/checkout';
+import { Footer } from './components/Footer';
+import { PromotionTopBar } from './components/promotionTopBar';
+import { MainContainer } from './components/mainContainer';
+import { Contact } from './pages/contact';
+import { About } from './pages/about';
 
 function App() {
   return (
-    <>
-      <div className="top-bar px-4">
-        <div className="top-bar__promotion">
-          <p>No fit? No Problem! - Free returns within 60 days!</p>
-        </div>
-        <div className="top-bar__promotion d-none d-sm-block">
-          <p>Free shipping. Of course.</p>
-        </div>
-      </div>
-      <Checkout />
-    </>
+    <Router>
+      <PromotionTopBar />
+      <MainContainer>
+        <Header />
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path="/products">
+            <Products />
+          </Route>
+          <Route path="/product">
+            <Product />
+          </Route>
+          <Route path="/cart">
+            <CartPage />
+          </Route>
+          <Route path="/checkout">
+            <Checkout />
+          </Route>
+          <Route path="/contact">
+            <Contact />
+          </Route>
+          <Route path="/about">
+            <About />
+          </Route>
+        </Switch>
+        <Footer />
+      </MainContainer>
+    </Router>
   );
 }
 
