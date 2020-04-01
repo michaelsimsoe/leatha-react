@@ -1,26 +1,30 @@
 main.shoe {
-  background: rgb(166,121,93);
-  background: radial-gradient(ellipse at bottom, rgba(166,121,93,1) 15%, rgba(112,112,112,1) 50%);
+  background: rgb(166, 121, 93);
+  background: radial-gradient(
+    ellipse at bottom,
+    rgba(166, 121, 93, 1) 15%,
+    rgba(112, 112, 112, 1) 50%
+  );
   min-height: calc(100vh - 40px);
   position: relative;
   color: $font-color;
 
   & .main-header #bg-blur {
-    opacity: .4;
+    opacity: 0.4;
   }
 
-  & .shoe-photo img  {
+  & .shoe-photo img {
     max-width: 100%;
   }
 
   & .wishlist {
-
     & .wish {
       fill: transparent;
       stroke: #fff;
       stroke-width: 3px;
       height: 30px;
       cursor: pointer;
+      margin-right: 1em;
     }
 
     & .wish:hover {
@@ -32,7 +36,7 @@ main.shoe {
     }
   }
 
-  & .sizes div .size{
+  & .sizes div .size {
     position: relative;
     cursor: pointer;
     display: flex;
@@ -49,7 +53,6 @@ main.shoe {
       background-color: #fff;
       color: $dark-blue;
     }
-    
   }
   .size span {
     display: none;
@@ -58,7 +61,7 @@ main.shoe {
     background-color: #fff;
     color: $dark-blue !important;
   }
-  .current span{
+  .current span {
     display: block;
     position: absolute;
     bottom: -33px;
@@ -67,8 +70,8 @@ main.shoe {
   }
 
   .single-shoe {
-      margin: 0 auto;
-      background-color: $transparent-brown;
+    margin: 0 auto;
+    background-color: $transparent-brown;
   }
 
   .shoe-product-information {
@@ -80,18 +83,18 @@ main.shoe {
     cursor: pointer;
   }
 
-  .tab-tale, .tab-spec {
+  .tab-tale,
+  .tab-spec {
     border-radius: 3px 3px 0 0;
-  } 
+  }
 
   .tabs > div {
-    background-color: rgba($dark-brown, .33);
+    background-color: rgba($dark-brown, 0.33);
   }
 
   .tabs > .active {
     background-color: $dark-brown;
   }
-
 
   .shoe-info-text {
     background-color: $dark-brown;
@@ -104,10 +107,7 @@ main.shoe {
 
   @media (max-width: 575.98px) {
     .shoe-product-information {
-        width: 100%;
+      width: 100%;
     }
   }
 }
-
-
-

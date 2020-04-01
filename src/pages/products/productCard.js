@@ -1,7 +1,30 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import { addToFavourites, removeFromFavourites } from '../../actions';
+
 export const ProductCard = props => {
+  const [active, setActive] = useState(false);
+  const state = useSelector(state => state);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const productIsFavourited = state.favourites.filter(
+      product => product.id === props.product.id
+    );
+    setActive(productIsFavourited.length);
+  }, [state, props.product.id]);
+
+  const handleClick = () => {
+    if (!active) {
+      dispatch(addToFavourites(props.product));
+    } else {
+      dispatch(removeFromFavourites(props.product.id));
+    }
+    setActive(!active);
+  };
+
   return (
     <div className="card m-4">
       <img
@@ -10,7 +33,8 @@ export const ProductCard = props => {
         alt="..."
       />
       <svg
-        className="wishes"
+        onClick={handleClick}
+        className={`wishes ${active ? 'favourited' : ''}`}
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 33 34.32"
       >
