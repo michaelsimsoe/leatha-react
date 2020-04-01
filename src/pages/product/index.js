@@ -1,8 +1,8 @@
-import { ProductInfo } from './productinfo';
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-
 import { useLocation, Redirect } from 'react-router-dom';
+
+import { ProductInfo } from './productinfo';
 
 export const Product = () => {
   const state = useSelector(state => state);
@@ -23,23 +23,34 @@ export const Product = () => {
     </div>
   );
 };
+
 function ProductDescription({ product }) {
+  const [showSpec, setShowSpec] = useState(false);
+
   return (
     <div className="row mt-mb-5 mt-1">
       <div className="col-sm-12 d-flex justify-content-center">
         <section className="shoe-product-information">
           <div className="tabs d-flex">
-            <div className="tab-tale active p-2">
+            <div
+              onClick={() => setShowSpec(!showSpec)}
+              className={`tab-tale p-2 ${showSpec ? '' : 'active'}`}
+            >
               Tale of the {product.name}
             </div>
-            <div className="tab-spec p-2">Specs of the shoes</div>
+            <div
+              onClick={() => setShowSpec(!showSpec)}
+              className={`tab-spec p-2 ${showSpec ? 'active' : ''}`}
+            >
+              Specs of the shoes
+            </div>
           </div>
           <div className="tab-text shoe-info-text p-md-5 p-1">
-            <div className="tale">
+            <div className={`tale ${showSpec ? 'invisible-text' : ''}`}>
               <h3>{product.descriptionTitle}</h3>
               <p>{product.description}</p>
             </div>
-            <div className="spec invisible-text">
+            <div className={`spec ${showSpec ? '' : 'invisible-text'}`}>
               <h3>Specs</h3> <p> Good shoes </p>
             </div>
           </div>

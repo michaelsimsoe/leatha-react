@@ -61,7 +61,7 @@ main.shoe {
     background-color: #fff;
     color: $dark-blue !important;
   }
-  .current span {
+  .current > span {
     display: block;
     position: absolute;
     bottom: -33px;

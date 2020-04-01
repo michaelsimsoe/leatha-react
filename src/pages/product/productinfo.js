@@ -80,7 +80,7 @@ export const ProductInfo = props => {
 };
 
 function AvailableSizes(props) {
-  const [active, setActive] = useState(false);
+  const [active, setActive] = useState(null);
 
   return (
     <div className="sizes">
@@ -89,9 +89,11 @@ function AvailableSizes(props) {
         {props.sizes.map(size => {
           return (
             <div
-              onClick={() => setActive(!active)}
+              onClick={() => setActive(size)}
               key={size}
-              className={`size m-2 mt-4 p-2 shadow ${active ? 'current' : ''}`}
+              className={`size m-2 mt-4 p-2 shadow ${
+                active === size ? 'current' : ''
+              }`}
             >
               {size}
               <span>Your size</span>

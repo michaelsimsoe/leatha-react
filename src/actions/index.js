@@ -40,11 +40,12 @@ export const removeFromFavourites = id => {
   };
 };
 
-export const addToCart = product => {
+export const addToCart = (product, size) => {
   return {
     type: ADD_TO_CART,
     payload: {
       product,
+      size,
     },
   };
 };
