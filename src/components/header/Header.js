@@ -50,7 +50,7 @@ function MainMenu() {
           <img src={favSvg} alt="hearth" />
           <span>Wishlist</span>
         </Link>
-        <Link className="ml-4" to="cart">
+        <Link className="ml-4" to="/cart">
           <img src={cartSvg} alt="cart" />
           <span>Cart</span>
         </Link>

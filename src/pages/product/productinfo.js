@@ -1,10 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { addToFavourites, removeFromFavourites } from '../../actions';
+import { AvailableSizes } from './AvailableSizes';
+
+import {
+  addToFavourites,
+  removeFromFavourites,
+  addToCart,
+} from '../../actions';
 
 export const ProductInfo = props => {
   const [active, setActive] = useState(false);
+  const [size, setSize] = useState(null);
   const state = useSelector(state => state);
   const dispatch = useDispatch();
 
@@ -15,13 +22,17 @@ export const ProductInfo = props => {
     setActive(productIsFavourited.length);
   }, [state, props.product.id]);
 
-  const handleClick = () => {
+  const handleFavouriteClick = () => {
     if (!active) {
       dispatch(addToFavourites(props.product));
     } else {
       dispatch(removeFromFavourites(props.product.id));
     }
     setActive(!active);
+  };
+
+  const handleAddToCart = () => {
+    dispatch(addToCart(props.product, size));
   };
 
   const added = active ? (
@@ -59,7 +70,7 @@ export const ProductInfo = props => {
           <h4>${props.product.price}</h4>
           <div className="wishlist d-flex mb-4">
             <svg
-              onClick={handleClick}
+              onClick={handleFavouriteClick}
               className={`wish mr-3" ${active ? 'favourited' : ''}`}
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 33 34.32"
@@ -71,36 +82,15 @@ export const ProductInfo = props => {
           <div className="info-text">
             <p>{props.product.shortFrase}</p>
           </div>
-          <AvailableSizes sizes={props.product.availableSizes} />
-          <button className="btn btn-light shadow">Add to cart</button>
+          <AvailableSizes
+            chosenSize={setSize}
+            sizes={props.product.availableSizes}
+          />
+          <button onClick={handleAddToCart} className="btn btn-light shadow">
+            Add to cart
+          </button>
         </div>
       </div>
     </div>
   );
 };
-
-function AvailableSizes(props) {
-  const [active, setActive] = useState(null);
-
-  return (
-    <div className="sizes">
-      <h4>Available Sizes</h4>
-      <div className="d-flex mb-4 flex-wrap flex-row">
-        {props.sizes.map(size => {
-          return (
-            <div
-              onClick={() => setActive(size)}
-              key={size}
-              className={`size m-2 mt-4 p-2 shadow ${
-                active === size ? 'current' : ''
-              }`}
-            >
-              {size}
-              <span>Your size</span>
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  );
-}
