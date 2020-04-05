@@ -11,6 +11,7 @@ import { PromotionTopBar } from './components/promotionTopBar';
 import { MainContainer } from './components/mainContainer';
 import { Contact } from './pages/contact';
 import { About } from './pages/about';
+import { MobileMenu } from './components/mobileMenu';
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
         </Switch>
         <Footer />
       </MainContainer>
+      <MobileMenu />
     </Router>
   );
 }
