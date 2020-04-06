@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import * as yup from 'yup';
 
 export const Contact = () => {
   return (
@@ -21,54 +24,87 @@ function SocialIcons() {
   );
 }
 
+const schema = yup.object().shape({
+  contactName: yup.string().required('⚠ Please tell us you name'),
+  contactEmail: yup
+    .string()
+    .email("⚠ This email address doesn't look right.")
+    .required('⚠ Email is required'),
+  contactMessage: yup
+    .string()
+    .min(
+      3,
+      '⚠ There must be something you want to say? What about a simple "hi"?'
+    ),
+});
+
 function ContactForm() {
+  const [formData, setFormData] = useState(null);
+  const { register, handleSubmit, errors } = useForm({
+    validationSchema: schema,
+  });
+  const onSubmit = data => {
+    setFormData(data);
+  };
+
+  if (formData) {
+    return (
+      <section className="contact-message col-sm-5 mt-5 mb-5 ml-md-5 p-5">
+        <h3>Thank you, {formData.contactName}!</h3>
+        <p>We'll give you a shout ASAP!</p>
+      </section>
+    );
+  }
   return (
     <section className="contact-message col-sm-5 mt-5 mb-5 ml-md-5 p-5">
       <h3>Send us a message</h3>
-      <form method="get">
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className="form-group">
-          <label for="contact-name">Name</label>
+          <label htmlFor="contactName">Name</label>
           <input
-            name="contact-name"
+            name="contactName"
             type="text"
             className="form-control"
-            id="contact-name"
+            id="contactName"
             placeholder="Who goes there?"
-            spellcheck="false"
+            ref={register}
           />
-          <span id="contact-name-message"></span>
+          {errors.contactName && (
+            <span id="contact-name-message">{errors.contactName.message}</span>
+          )}
         </div>
         <div className="form-group">
-          <label for="contact-email">Email address *</label>
+          <label htmlFor="contactEmail">Email address</label>
           <input
-            name="contact-email"
+            name="contactEmail"
             type="email"
             className="form-control"
-            id="contact-email"
-            aria-describedby="emailHelp"
+            id="contactEmail"
             placeholder="So we can reply you"
-            required=""
+            ref={register}
           />
-          <span id="contact-email-message">
-            ⚠ This email address doesn't look right.
-          </span>
+          {errors.contactEmail && (
+            <span id="contact-email-message">
+              {errors.contactEmail.message}
+            </span>
+          )}
         </div>
         <div className="form-group">
-          <label for="contact-message">
-            What do you want to tell us?Or ask us?
+          <label htmlFor="contactMessage">
+            What do you want to tell us? Or ask us?
           </label>
           <textarea
-            name="contact-message"
+            name="contactMessage"
             className="form-control"
-            id="contact-message"
+            id="contactMessage"
             rows="3"
-            required=""
-            pattern=".{2,}"
+            ref={register}
           ></textarea>
-          <span id="contact-message-message">
-            ⚠ Your message is a bit short.You need at least two letters. Maybe
-            start with a "Hi"?
-          </span>
+          {errors.contactMessage && (
+            <span id="contact-message-message">
+              {errors.contactMessage.message}
+            </span>
+          )}
         </div>
         <button
           id="contact-submit"
@@ -87,24 +123,24 @@ function FrequentlyAskedQuestions() {
     <section className="contact-faq col-sm-4 mt-5 mb-5 ml-md-5 p-5">
       <h3 className="mb-5">Frequently Asked Questions</h3>
       <div className="list-group">
-        <a href="/" className="list-group-item list-group-item-action">
+        <Link to="/contact" className="list-group-item list-group-item-action">
           What is the shipping process like?
-        </a>
-        <a href="/" className="list-group-item list-group-item-action">
+        </Link>
+        <Link to="/contact" className="list-group-item list-group-item-action">
           How do I take care of my lethas?
-        </a>
-        <a href="/" className="list-group-item list-group-item-action">
+        </Link>
+        <Link to="/contact" className="list-group-item list-group-item-action">
           Why do you only make mens shoes?
-        </a>
-        <a href="/" className="list-group-item list-group-item-action">
+        </Link>
+        <Link to="/contact" className="list-group-item list-group-item-action">
           Do you make soccer shoes?
-        </a>
-        <a href="/" className="list-group-item list-group-item-action">
+        </Link>
+        <Link to="/contact" className="list-group-item list-group-item-action">
           Do you have camel leather?
-        </a>
-        <a href="/" className="list-group-item list-group-item-action">
-          How long is the guarantie?
-        </a>
+        </Link>
+        <Link to="/contact" className="list-group-item list-group-item-action">
+          How long is the warranty?
+        </Link>
       </div>
     </section>
   );

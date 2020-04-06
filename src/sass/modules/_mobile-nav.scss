@@ -43,13 +43,14 @@
 }
 
 /* Add a color to the active/current link */
+.active-navlink,
 .navbar-mobile a.active {
   background-color: #fff;
-  color: $dark-blue;
+  color: $dark-blue !important;
 }
 
 @media (min-width: 575.98px) {
   .navbar-mobile {
-    display:none !important;
+    display: none !important;
   }
 }

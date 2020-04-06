@@ -1,18 +1,16 @@
 main.contact {
-  background: url("/img/hq.jpg");
+  background: url('/img/hq.jpg');
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover; 
+  background-size: cover;
   color: $font-color;
   min-height: calc(100vh - 40px);
 
   display: flex;
   flex-direction: column;
   position: relative;
-
 }
-
 
 .contact {
   & section h3 {
@@ -21,12 +19,15 @@ main.contact {
     font-weight: bold;
   }
 
-  &-faq, &-message, &-social {
+  &-faq,
+  &-message,
+  &-social {
     max-height: 80%;
   }
 
-  &-faq, &-message {
-    background-color: rgba(#707070, .6);
+  &-faq,
+  &-message {
+    background-color: rgba(#707070, 0.6);
   }
 
   &-social {
@@ -44,8 +45,8 @@ main.contact {
   #contact-name-message,
   #contact-email-message,
   #contact-message-message {
-    display:none;
-    color: #fff;
+    background-color: #d34242;
+    color: white;
     font-size: 22px;
   }
 
