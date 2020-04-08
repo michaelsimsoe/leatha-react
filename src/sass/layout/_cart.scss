@@ -1,12 +1,16 @@
 main.cart {
-  background: rgb(166,121,93);
-  background: radial-gradient(ellipse at bottom, rgba(166,121,93,1) 15%, rgba(112,112,112,1) 50%);
+  background: rgb(166, 121, 93);
+  background: radial-gradient(
+    ellipse at bottom,
+    rgba(166, 121, 93, 1) 15%,
+    rgba(112, 112, 112, 1) 50%
+  );
   min-height: calc(100vh - 40px);
   position: relative;
   color: $font-color;
 
   & .main-header #bg-blur {
-    opacity: .4;
+    opacity: 0.4;
   }
 
   & h4 {
@@ -14,10 +18,10 @@ main.cart {
   }
   & h4 > span {
     font-size: 12px;
-  } 
+  }
 
   .cart-col {
-    background-color: rgba($dark-brown, .33);
+    background-color: rgba($dark-brown, 0.33);
     max-width: 70%;
   }
 
@@ -27,11 +31,6 @@ main.cart {
     & p > span {
       font-weight: bold;
     }
-    
-  }
-
-  .cart-error-message {
-    display:none;
   }
 
   & input.invalid {
@@ -42,15 +41,11 @@ main.cart {
     border: 1px solid red;
   }
 
-  & input.invalid ~ .cart-error-message {
-    display: block;
-  }
-
   @media (max-width: 575.98px) {
-      .cart-col {
-          max-width: 100% !important;
-      }
+    .cart-col {
+      max-width: 100% !important;
     }
+  }
 
   .payment-options a {
     font-size: 22px;

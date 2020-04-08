@@ -1,68 +1,99 @@
 import React from 'react';
+import { useForm } from 'react-hook-form';
+import * as yup from 'yup';
 
-export function CheckoutForm() {
+const schema = yup.object().shape({
+  firstName: yup.string().required('⚠ We need your first name.'),
+  lastName: yup.string().required('⚠ We need your last name.'),
+  email: yup
+    .string()
+    .email("⚠ This email address doesn't look right.")
+    .required('⚠ We need it for receipts and such.'),
+  address: yup.string().required('⚠ We really need your address.'),
+  city: yup.string().required('⚠ We really need to know the city.'),
+  postalCode: yup
+    .string()
+    .required('⚠ We really need to know your postal code.'),
+});
+
+export function CheckoutForm(props) {
+  const { register, handleSubmit, errors } = useForm({
+    validationSchema: schema,
+  });
+
+  const onSubmit = data => {
+    console.log(data);
+    props.submit(data);
+  };
+
   return (
     <div className="col-sm-6 p-5">
-      <form id="cart-fort">
+      <form id="cart-form" onSubmit={handleSubmit(onSubmit)}>
         <div className="form-group">
-          <label htmlFor="first-name">First name</label>
+          <label htmlFor="firstName">First name</label>
           <input
             type="text"
             className="form-control"
-            id="first-name"
+            id="firstName"
+            name="firstName"
             placeholder="Your first name"
-            pattern=".{1,}"
-            required=""
+            ref={register}
           />
-          <span id="cart-fname-message" className="cart-error-message">
-            ⚠ We need your first name.
-          </span>
+          {errors.firstName && (
+            <span id="cart-fname-message" className="cart-error-message">
+              {errors.firstName.message}
+            </span>
+          )}
         </div>
         <div className="form-group">
-          <label htmlFor="last-name">Last name</label>
+          <label htmlFor="lastName">Last name</label>
           <input
             type="text"
             className="form-control"
-            id="last-name"
+            id="lastName"
+            name="lastName"
             placeholder="Your last name"
-            pattern=".{1,}"
-            required=""
+            ref={register}
           />
-          <span id="cart-lname-message" className="cart-error-message">
-            need your last name.
-          </span>
+          {errors.lastName && (
+            <span id="cart-fname-message" className="cart-error-message">
+              {errors.lastName.message}
+            </span>
+          )}
         </div>
         <div className="form-group">
-          <label htmlFor="exampleInputEmail1">Email address</label>
+          <label htmlFor="email">Email address</label>
           <input
             type="email"
             className="form-control"
-            id="exampleInputEmail1"
+            id="email"
+            name="email"
             aria-describedby="emailHelp"
             placeholder="Enter email"
-            pattern=".{1,}"
-            required=""
+            ref={register}
           />{' '}
           <small id="emailHelp" className="form-text">
             (In order to send your receipt.We promise not to share it.)
           </small>
-          <span id="cart-email-message" className="cart-error-message">
-            ⚠ This email address doesn't look right.
-          </span>
+          {errors.email && (
+            <span id="cart-fname-message" className="cart-error-message">
+              {errors.email.message}
+            </span>
+          )}
         </div>
         <div className="form-group">
-          <label htmlFor="address">Address</label>
+          <label htmlFor="adress">Address</label>
           <input
             type="text"
             className="form-control"
             id="address"
+            name="address"
             placeholder="Your address"
-            pattern=".{1,}"
-            required=""
+            ref={register}
           />
-          <span id="cart-address-message" className="cart-error-message">
-            ⚠ We really need your address.
-          </span>
+          {errors.adress && (
+            <span className="cart-error-message">{errors.adress.message}</span>
+          )}
         </div>
         <div className="form-group">
           <label htmlFor="city">City</label>
@@ -70,27 +101,29 @@ export function CheckoutForm() {
             type="text"
             className="form-control"
             id="city"
+            name="city"
             placeholder="Your city"
-            pattern=".{1,}"
-            required=""
+            ref={register}
           />
-          <span id="cart-city-message" className="cart-error-message">
-            ⚠ We really need to know the city.
-          </span>
+          {errors.city && (
+            <span className="cart-error-message">{errors.city.message}</span>
+          )}
         </div>
         <div className="form-group">
-          <label htmlFor="postal-code">Postal code</label>
+          <label htmlFor="postalCode">Postal code</label>
           <input
             type="text"
             className="form-control"
-            id="postal-code"
+            id="postalCode"
+            name="postalCode"
             placeholder="Your postal code"
-            pattern=".{1,}"
-            required=""
+            ref={register}
           />
-          <span id="cart-postal-message" className="cart-error-message">
-            ⚠ We really need to know your postal code.
-          </span>
+          {errors.postalCode && (
+            <span className="cart-error-message">
+              {errors.postalCode.message}
+            </span>
+          )}
         </div>
       </form>
     </div>

@@ -4,6 +4,7 @@ import {
   REMOVE_FROM_FAVOURITES,
   ADD_TO_CART,
   REMOVE_FROM_CART,
+  PURCHASE,
 } from './types';
 
 import { data } from '../api/api';
@@ -55,6 +56,16 @@ export const removeFromCart = product => {
     type: REMOVE_FROM_CART,
     payload: {
       product,
+    },
+  };
+};
+
+export const purchase = (method, formData) => {
+  return {
+    type: PURCHASE,
+    payload: {
+      method,
+      formData,
     },
   };
 };

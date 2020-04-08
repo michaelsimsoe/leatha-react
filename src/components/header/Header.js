@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import cartSvg from './cart.svg';
 import favSvg from './fav.svg';
@@ -31,6 +32,9 @@ export const Header = () => {
 };
 
 function MainMenu() {
+  const state = useSelector(state => state);
+
+  const amountInCart = state.cart.length;
   return (
     <div className="main-header__nav-top">
       <div className="d-flex align-items-center nav-main">
@@ -50,9 +54,14 @@ function MainMenu() {
           <img src={favSvg} alt="hearth" />
           <span>Wishlist</span>
         </Link>
-        <Link className="ml-4" to="/cart">
+        <Link className="ml-4 cart-link" to="/cart">
           <img src={cartSvg} alt="cart" />
           <span>Cart</span>
+          {amountInCart > 0 ? (
+            <span className="cart-link__amount-in-cart">{amountInCart}</span>
+          ) : (
+            ''
+          )}
         </Link>
         <Link className="ml-4" to="/">
           <img src={loginSvg} alt="login" />
