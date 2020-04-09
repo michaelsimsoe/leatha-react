@@ -12,6 +12,7 @@ import {
 export const ProductInfo = props => {
   const [active, setActive] = useState(false);
   const [size, setSize] = useState(null);
+  const [addedToCart, setAddedToCart] = useState(false);
   const state = useSelector(state => state);
   const dispatch = useDispatch();
 
@@ -20,7 +21,7 @@ export const ProductInfo = props => {
       product => product.id === props.product.id
     );
     setActive(productIsFavourited.length);
-  }, [state, props.product.id]);
+  }, [state, props.product.id, size, addedToCart]);
 
   const handleFavouriteClick = () => {
     if (!active) {
@@ -28,11 +29,14 @@ export const ProductInfo = props => {
     } else {
       dispatch(removeFromFavourites(props.product.id));
     }
-    setActive(!active);
   };
 
   const handleAddToCart = () => {
-    dispatch(addToCart(props.product, size));
+    if (size) {
+      dispatch(addToCart(props.product, size));
+      setAddedToCart(true);
+      setSize(null);
+    }
   };
 
   const added = active ? (
@@ -42,6 +46,11 @@ export const ProductInfo = props => {
   ) : (
     <span className="wishadd">Add</span>
   );
+
+  const handleChosenSize = size => {
+    setSize(size);
+    setAddedToCart(false);
+  };
 
   return (
     <div className="shoe-info p-md-5 p-1">
@@ -83,8 +92,9 @@ export const ProductInfo = props => {
             <p>{props.product.shortFrase}</p>
           </div>
           <AvailableSizes
-            chosenSize={setSize}
+            chosenSize={handleChosenSize}
             sizes={props.product.availableSizes}
+            unselect={addedToCart}
           />
           <button onClick={handleAddToCart} className="btn btn-light shadow">
             Add to cart

@@ -5,7 +5,15 @@ export function AvailableSizes(props) {
 
   useEffect(() => {
     props.chosenSize(active);
-  }, [props, active]);
+    if (props.unselect) {
+      console.log(props.unselect);
+      setActive(null);
+    }
+  }, [props, active, props.unselect]);
+
+  const handleSetSize = size => {
+    setActive(size);
+  };
   return (
     <div className="sizes">
       <h4>Available Sizes</h4>
@@ -13,7 +21,7 @@ export function AvailableSizes(props) {
         {props.sizes.map(size => {
           return (
             <div
-              onClick={() => setActive(size)}
+              onClick={() => handleSetSize(size)}
               key={size}
               className={`size m-2 mt-4 p-2 shadow ${
                 active === size ? 'current' : ''
