@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export const Checkout = () => {
   return (
@@ -32,18 +33,15 @@ export const Checkout = () => {
           </div>
           <div className="d-flex justify-content-between register-options mt-md-5 mt-1">
             <div className="d-flex flex-column mr-2">
-              <a href="./products.html" className="btn btn-warning btn-cta p-2">
+              <Link to="/" className="btn btn-warning btn-cta p-2">
                 Yes, that sounds great
-              </a>
+              </Link>
               <small>Perfect! We’ll send you a comfirmation email.</small>
             </div>
             <div className="d-flex flex-column ml-2">
-              <a
-                href="./products.html"
-                className="btn btn-warning btn-light p-2"
-              >
+              <Link to="/" className="btn btn-warning btn-light p-2">
                 Not not. Just go back to the store.
-              </a>
+              </Link>
               <small>
                 No worries. We’ll discard your info. Maybe next time?
               </small>
