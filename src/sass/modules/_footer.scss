@@ -8,6 +8,7 @@
   @media (max-width: 575.98px) {
     & {
       margin-bottom: 70px;
+      padding-bottom: 70px;
     }
   }
 }
@@ -22,7 +23,7 @@
     color: darken($font-color, 3%);
   }
 
-    & a.active {
+  & a.active {
     background-color: $transparent-brown;
     color: darken($font-color, 5%);
     text-decoration: underline;

@@ -6,9 +6,8 @@ import getPathName from '../utils/getPathName';
 export const Breadcrumbs = () => {
   const location = useLocation();
   const paths = location.pathname.split('/').splice(1);
-  console.log('test1', paths[0]);
-  console.log('test', getPathName('/' + paths[0]));
   let links;
+
   if (paths.length > 1) {
     links = (
       <>
@@ -23,6 +22,11 @@ export const Breadcrumbs = () => {
   }
 
   useEffect(() => {}, [links]);
+
+  if (location.pathname === '/') {
+    return '';
+  }
+
   return (
     <div className="crumbs">
       {' '}

@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 export const MobileMenu = () => {
   const [open, setOpen] = useState(false);
   let location = useLocation();
+  const state = useSelector(state => state);
+
+  const amountInCart = state.cart.length;
   let currentLocation = location.pathname;
 
   useEffect(() => {
@@ -36,6 +40,7 @@ export const MobileMenu = () => {
           activeClassName="active"
           to="/cart"
           className="flex-fill d-flex flex-column"
+          style={{ position: 'relative' }}
         >
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 33">
             <g id="icon-1641920" transform="translate(1.5 1.5)">
@@ -60,6 +65,11 @@ export const MobileMenu = () => {
             </g>
           </svg>
           <span>Cart</span>
+          {amountInCart > 0 ? (
+            <span className="cart-link__amount-in-cart">{amountInCart}</span>
+          ) : (
+            ''
+          )}
         </NavLink>
         <button
           onClick={openMenu}
