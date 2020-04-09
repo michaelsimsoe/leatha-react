@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
@@ -6,11 +6,12 @@ import cartSvg from './cart.svg';
 import favSvg from './fav.svg';
 import loginSvg from './login.svg';
 import searchSvg from './search.svg';
+import getPathName from '../../utils/getPathName';
 
 export const Header = () => {
   const location = useLocation();
 
-  const headerTitle = setHeaderTitle(location);
+  const headerTitle = getPathName(location.pathname);
   return (
     <header className="main-header row px-3">
       <div id="bg-blur" className="d-none d-sm-block"></div>
@@ -86,25 +87,4 @@ function SubMenu() {
       </Link>
     </div>
   );
-}
-
-function setHeaderTitle(location) {
-  switch (location.pathname) {
-    case '/':
-      return '';
-    case '/products':
-      return 'All Shoes';
-    case '/cart':
-      return 'Cart';
-    case '/checkout':
-      return 'Checkout';
-    case 'product':
-      return 'A Leatha Shoe';
-    case '/contact':
-      return 'Contact';
-    case '/about':
-      return 'About Letha';
-    default:
-      return '';
-  }
 }

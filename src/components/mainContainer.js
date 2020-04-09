@@ -11,7 +11,7 @@ export const MainContainer = ({ children }) => {
 };
 
 function classNameByLocation(location) {
-  if (location.pathname.includes('/product/')) {
+  if (location.pathname.includes('/products/')) {
     return 'shoe';
   }
   switch (location.pathname) {

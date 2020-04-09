@@ -44,13 +44,10 @@ export const ProductCard = props => {
         <span>{props.product.name}</span> <span>{props.product.price}</span>
       </div>
       <Link
-        to={`/product/${props.product.id}`}
+        to={`/products/${props.product.id}`}
         className="read-more btn btn-light shadow"
       >
         Read More
-      </Link>
-      <Link to="/cart" className="add-cart btn btn-light shadow">
-        Add to cart
       </Link>
     </div>
   );

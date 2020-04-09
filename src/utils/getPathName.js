@@ -1,5 +1,5 @@
-export function setHeaderTitle(location) {
-  switch (location.pathname) {
+export default function getPathName(location) {
+  switch (location) {
     case '/':
       return '';
     case '/products':

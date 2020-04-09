@@ -12,6 +12,7 @@ import { MainContainer } from './components/mainContainer';
 import { Contact } from './pages/contact';
 import { About } from './pages/about';
 import { MobileMenu } from './components/mobileMenu';
+import { Breadcrumbs } from './components/Breadcrumbs';
 
 function App() {
   return (
@@ -19,14 +20,15 @@ function App() {
       <PromotionTopBar />
       <MainContainer>
         <Header />
+        <Breadcrumbs />
         <Switch>
           <Route exact path="/">
             <Home />
           </Route>
-          <Route path="/products">
+          <Route exact path="/products">
             <Products />
           </Route>
-          <Route path="/product">
+          <Route path="/products/:id">
             <Product />
           </Route>
           <Route path="/cart">
