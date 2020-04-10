@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { AvailableSizes } from './AvailableSizes';
 
@@ -103,4 +104,8 @@ export const ProductInfo = props => {
       </div>
     </div>
   );
+};
+
+ProductInfo.propTypes = {
+  product: PropTypes.object.isRequired,
 };

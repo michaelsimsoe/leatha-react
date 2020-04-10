@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { Basket } from './Basket';
 import { CheckoutForm } from './CheckoutForm';
@@ -67,3 +68,7 @@ function PaymentMethod(props) {
     </div>
   );
 }
+
+PaymentMethod.propTypes = {
+  paymentMethod: PropTypes.func.isRequired,
+};

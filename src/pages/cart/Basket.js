@@ -18,8 +18,6 @@ export function Basket() {
   const totalPrice = state.cart
     .map(({ product }) => product.price)
     .reduce((prev, next) => {
-      console.log(prev);
-      console.log(next);
       return prev + next;
     }, 0);
   return (

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import { addToFavourites, removeFromFavourites } from '../../actions';
@@ -51,4 +52,8 @@ export const ProductCard = props => {
       </Link>
     </div>
   );
+};
+
+ProductCard.propTypes = {
+  product: PropTypes.object.isRequired,
 };

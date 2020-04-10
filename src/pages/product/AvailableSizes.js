@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 export function AvailableSizes(props) {
   const [active, setActive] = useState(null);
@@ -36,3 +37,9 @@ export function AvailableSizes(props) {
     </div>
   );
 }
+
+AvailableSizes.propTypes = {
+  chosenSize: PropTypes.func.isRequired,
+  sizes: PropTypes.array.isRequired,
+  unselect: PropTypes.bool,
+};

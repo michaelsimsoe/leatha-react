@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 export function ProductDescription({ product }) {
   const [showSpec, setShowSpec] = useState(false);
@@ -34,3 +35,7 @@ export function ProductDescription({ product }) {
     </div>
   );
 }
+
+ProductDescription.propTypes = {
+  product: PropTypes.object.isRequired,
+};

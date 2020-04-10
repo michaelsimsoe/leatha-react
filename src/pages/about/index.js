@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export const About = () => {
   return (
@@ -40,3 +41,9 @@ function AboutCard({ img, title, description }) {
     </article>
   );
 }
+
+AboutCard.propTypes = {
+  img: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+};

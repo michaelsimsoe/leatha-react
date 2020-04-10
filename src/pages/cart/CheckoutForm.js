@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import PropTypes from 'prop-types';
 import * as yup from 'yup';
 
 const schema = yup.object().shape({
@@ -22,7 +23,6 @@ export function CheckoutForm(props) {
   });
 
   const onSubmit = data => {
-    console.log(data);
     props.submit(data);
   };
 
@@ -129,3 +129,7 @@ export function CheckoutForm(props) {
     </div>
   );
 }
+
+CheckoutForm.propTypes = {
+  submit: PropTypes.func.isRequired,
+};
